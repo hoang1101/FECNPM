@@ -1,3 +1,4 @@
+import { useAuth } from '@/context/AuthProvider';
 import {
   ApartmentOutlined,
   AuditOutlined,
@@ -11,94 +12,129 @@ import {
   TeamOutlined,
   UserAddOutlined,
   WalletOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 // import { Books, BellRing, Stack, User } from '@/assets';
-const Layout = [
+const LayoutAdmin = [
   {
-    label: "Dashboard",
-    key: "Dashboard",
-    icon: <HomeOutlined />,
-  },
-  {
-    label: "Quản lý tài khoản",
+    label: 'Quản lý tài khoản',
     icon: <FolderOpenOutlined />,
     children: [
       {
-        label: "Tạo tài khoản",
-        key: "moreaccount",
+        label: 'Tạo tài khoản',
+        key: 'moreaccount',
         icon: <UserAddOutlined />,
       },
       {
-        label: "Danh sách tài khoản",
-        key: "accountlist",
+        label: 'Danh sách tài khoản',
+        key: 'accountlist',
         icon: <TeamOutlined />,
       },
     ],
   },
+];
+const LayoutManager = [
   {
-    label: "Quản lý nhân viên",
+    label: 'Quản lý nhân viên',
     icon: <TeamOutlined />,
 
     children: [
       {
-        label: "Danh sách nhân viên",
-        key: "employeelist",
+        label: 'Danh sách nhân viên',
+        key: 'employeelist',
         icon: <ContactsOutlined />,
       },
       {
-        label: "Tạo hồ sơ",
-        key: "profile",
+        label: 'Tạo hồ sơ',
+        key: 'profile',
         icon: <FileAddOutlined />,
       },
     ],
   },
   {
-    label: "Quản lý lương",
+    label: 'Quản lý lương',
     icon: <BarChartOutlined />,
     children: [
       {
-        label: "Bảng lương nhân viên",
-        key: "payroll",
+        label: 'Bảng lương nhân viên',
+        key: 'payroll',
         icon: <DatabaseOutlined />,
       },
       {
-        label: "Bảng mã lương",
-        key: "salarycode",
+        label: 'Bảng mã lương',
+        key: 'salarycode',
         icon: <DollarOutlined />,
       },
     ],
   },
   {
-    label: "Quản lý bộ phận",
+    label: 'Quản lý bộ phận',
     icon: <ApartmentOutlined />,
     children: [
       {
-        label: "Bộ Phận",
-        key: "part",
+        label: 'Bộ Phận',
+        key: 'part',
         icon: <AuditOutlined />,
       },
       {
-        label: "Chức Vụ",
-        key: "position",
+        label: 'Chức Vụ',
+        key: 'position',
         icon: <ContactsOutlined />,
       },
     ],
   },
   {
-    label: "Sổ Bảo Hiểm",
+    label: 'Sổ Bảo Hiểm',
     icon: <WalletOutlined />,
     children: [
       {
-        label: "Tao hoc van",
-        key: "hocvan",
+        label: 'Tao hoc van',
+        key: 'hocvan',
         icon: <AuditOutlined />,
       },
       {
-        label: "Chức Vụ",
-        key: "position",
+        label: 'Chức Vụ',
+        key: 'position',
         icon: <ContactsOutlined />,
       },
     ],
   },
 ];
-export default Layout;
+const LayoutUser = [
+  {
+    label: 'Sổ Bảo Hiểm',
+    icon: <WalletOutlined />,
+    children: [
+      {
+        label: 'Tao hoc van',
+        key: 'hocvan',
+        icon: <AuditOutlined />,
+      },
+      {
+        label: 'Chức Vụ',
+        key: 'position',
+        icon: <ContactsOutlined />,
+      },
+    ],
+  },
+];
+const Layout = [
+  {
+    label: 'Dashboard',
+    key: 'Dashboard',
+    icon: <HomeOutlined />,
+  },
+];
+
+const Out = () => {
+  const auth = useAuth();
+  let R = null;
+  if (auth?.user?.role === 1) {
+    R = [...Layout, ...LayoutAdmin];
+  } else if (auth?.user?.role === 2) {
+    R = [...Layout, ...LayoutManager];
+  } else {
+    R = [...Layout, ...LayoutUser];
+  }
+  return R;
+};
+export default Out;
