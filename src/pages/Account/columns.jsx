@@ -22,23 +22,23 @@ export const columns = (setSuccess) => {
     },
     {
       title: "Tên tài khoản",
-      key: "1",
+      key: "2",
       dataIndex: "TenTaiKhoan",
     },
     {
       title: "Mật Khẩu",
-      key: "2",
+      key: "3",
       dataIndex: "MatKhau",
     },
     {
       title: "Quyền",
-      key: "3",
+      key: "4",
       dataIndex: "MaQuyen",
     },
 
     {
       title: "Hoạt động",
-      key: "4",
+      key: "5",
       render: (_, info) => (
         <>
           <EditOutlined

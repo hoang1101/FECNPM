@@ -7,6 +7,10 @@ const Util = (name) => {
     moreaccount: "/Account",
 
     editAcount: "/Edit",
+
+    DSNV: "/DSNV",
+    Profile: "/profile",
+    editProfile: "/editProfile",
   };
   return array[name];
 };

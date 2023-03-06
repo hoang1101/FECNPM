@@ -2,7 +2,7 @@
 // import * as RoleService from './role';
 import * as AuthService from "./auth";
 import AdminService from "./admin";
-// import * as CourseService from './course';
+import ManagerAdmin from "./manager";
 // import * as BannerService from './banner';
 
 export {
@@ -10,6 +10,6 @@ export {
   // RoleService,
   AuthService,
   AdminService,
-  // CourseService,
+  ManagerAdmin,
   // BannerService,
 };

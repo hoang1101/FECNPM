@@ -86,7 +86,6 @@ export const NotificationService = {
         `${NOTIFICATION_API_PATH}/delete/notification/${id}`
       );
     } catch (e) {
-      console.log(e);
       if (e.response.message) {
         Message.error({ text: e.response.message });
       }
