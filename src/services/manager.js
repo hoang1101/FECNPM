@@ -11,7 +11,124 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
-
+  //tao chuc vu
+  createCV: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createCV`;
+      return axiosClient.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit chức vụ
+  editCV: async (MaChucVu, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/updateCV/${MaChucVu}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // xoa chuc vu
+  delCV: async (MaChucVu) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/delCV/${MaChucVu}`;
+      return axiosClient.delete(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // danh sách bac luong
+  DSBL: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/DSBL`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // tao bac luong moi
+  createBL: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createMB`;
+      return axiosClient.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit bac luong
+  editBL: async (MaBac, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/editMB/${MaBac}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // xoa bac luong
+  delBL: async (MaBac) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/delMB/${MaBac}`;
+      return axiosClient.delete(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // danh sach hop dong lao dong
+  DSHDLD: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/DSHDLD`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //tao hợp đồng lao động
+  createHDLD: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createHDLD`;
+      return axiosClient.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit hợp dồng lao động
+  editHDLD: async (MaHDLD, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/editHDLD/${MaHDLD}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit hoc van
+  editHV: async (MaHocVan, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/updateHV/${MaHocVan}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // del hoc van
+  delHV: async (MaHocVan) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/delHV/${MaHocVan}`;
+      return axiosClient.delete(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //tạo học vấn
+  createHV: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createHV`;
+      return axiosClient.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // dsnv con hoat dong
   NVHD: async () => {
     try {
       const url = `/${MANAGER_API_PATH}/NVHD`;
@@ -20,6 +137,7 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // nhân viên không hợp đồng
   NVKHD: async () => {
     try {
       const url = `/${MANAGER_API_PATH}/NVKHD`;
@@ -28,6 +146,25 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // nhân viên chưa có hợp đồng
+  NVCHD: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/NVCHD`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // tài khoản chưa có thông tin
+  NVNIF: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/NVNIF`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit thông tin nhân viên
   editProfile: async (MaNV, data) => {
     try {
       const url = `/${MANAGER_API_PATH}/updateNV/${MaNV}`;
@@ -36,6 +173,7 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // danh sách học vấn
   DSHV: async () => {
     try {
       const url = `${MANAGER_API_PATH}/DSHV`;
@@ -44,10 +182,65 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // danh sách công việc
   DSCV: async () => {
     try {
       const url = `${MANAGER_API_PATH}/DSCV`;
       return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // danh sách phiếu lương
+  DSPL: async () => {
+    try {
+      const url = `${MANAGER_API_PATH}/DSPL`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit phiếu lương
+  editPL: async (MaNV1, ThangTL1, NamTL1, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/editPL/${MaNV1}/${ThangTL1}/${NamTL1}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // create phiếu lương
+  createPL: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createPL`;
+      return axiosClient.post(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // danh sách KTKL
+  DSKTKL: async () => {
+    try {
+      const url = `${MANAGER_API_PATH}/DSKTKL`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // edit khen thưởng kỉ luật
+  editKTKL: async (SoQD, data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/editKTKL/${SoQD}`;
+      return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //tạo học vấn
+  createKTKL: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/createKTKL`;
+      return axiosClient.post(url, data);
     } catch (error) {
       console.log(error);
     }

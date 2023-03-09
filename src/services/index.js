@@ -3,7 +3,7 @@
 import * as AuthService from "./auth";
 import AdminService from "./admin";
 import ManagerAdmin from "./manager";
-// import * as BannerService from './banner';
+import UserAdmin from "./user";
 
 export {
   // MentorService,
@@ -11,5 +11,6 @@ export {
   AuthService,
   AdminService,
   ManagerAdmin,
+  UserAdmin,
   // BannerService,
 };

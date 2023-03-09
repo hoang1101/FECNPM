@@ -33,61 +33,109 @@ const LayoutManager = [
 
     children: [
       {
-        label: "Danh sách nhân viên",
-        key: "DSNV",
-        icon: <ContactsOutlined />,
-      },
-      {
         label: "Tạo hồ sơ",
         key: "Profile",
         icon: <FileAddOutlined />,
       },
+      {
+        label: "Danh sách nhân viên",
+        key: "DSNV",
+        icon: <ContactsOutlined />,
+      },
     ],
   },
   {
-    label: "Quản lý lương",
+    label: "Quản lý HDLD",
     icon: <BarChartOutlined />,
     children: [
       {
-        label: "Bảng lương nhân viên",
-        key: "payroll",
+        label: "Tạo HDLD",
+        key: "createHDLD",
         icon: <DatabaseOutlined />,
       },
       {
-        label: "Bảng mã lương",
-        key: "salarycode",
+        label: "Danh sách HDLD",
+        key: "DSHDLD",
         icon: <DollarOutlined />,
       },
     ],
   },
   {
-    label: "Quản lý bộ phận",
+    label: "Quản lý KTKL",
+    icon: <BarChartOutlined />,
+    children: [
+      {
+        label: "Tạo KTKL",
+        key: "createKTKL",
+        icon: <DollarOutlined />,
+      },
+      {
+        label: "Danh sách KTKL",
+        key: "DSKTKL",
+        icon: <DatabaseOutlined />,
+      },
+    ],
+  },
+  {
+    label: "Quản lý phiếu lương",
+    icon: <BarChartOutlined />,
+    children: [
+      {
+        label: "Tạo phiếu lương",
+        key: "createPL",
+        icon: <DollarOutlined />,
+      },
+      {
+        label: "Danh sách phiếu lương",
+        key: "DSPL",
+        icon: <DatabaseOutlined />,
+      },
+    ],
+  },
+  {
+    label: "Quản lý bậc lương",
     icon: <ApartmentOutlined />,
     children: [
       {
-        label: "Bộ Phận",
-        key: "part",
+        label: "Tạo bậc lương",
+        key: "createBL",
         icon: <AuditOutlined />,
       },
       {
-        label: "Chức Vụ",
-        key: "position",
+        label: "Danh sách bậc lương",
+        key: "DSBL",
         icon: <ContactsOutlined />,
       },
     ],
   },
   {
-    label: "Sổ Bảo Hiểm",
+    label: "Quản lý chức vụ",
     icon: <WalletOutlined />,
     children: [
       {
-        label: "Tao hoc van",
-        key: "hocvan",
+        label: "Tạo chức vụ",
+        key: "createCV",
         icon: <AuditOutlined />,
       },
       {
-        label: "Chức Vụ",
-        key: "position",
+        label: "Danh sách chức vụ",
+        key: "DSCV",
+        icon: <ContactsOutlined />,
+      },
+    ],
+  },
+  {
+    label: "Quản lý học vấn",
+    icon: <WalletOutlined />,
+    children: [
+      {
+        label: "Tạo học vấn",
+        key: "createHV",
+        icon: <AuditOutlined />,
+      },
+      {
+        label: "Danh sách học vấn",
+        key: "DSHV",
         icon: <ContactsOutlined />,
       },
     ],
@@ -95,20 +143,24 @@ const LayoutManager = [
 ];
 const LayoutUser = [
   {
-    label: "Sổ Bảo Hiểm",
+    label: "Thông tin cá nhân",
+    key: "TTCN",
     icon: <WalletOutlined />,
-    children: [
-      {
-        label: "Tao hoc van",
-        key: "hocvan",
-        icon: <AuditOutlined />,
-      },
-      {
-        label: "Chức Vụ",
-        key: "position",
-        icon: <ContactsOutlined />,
-      },
-    ],
+  },
+  {
+    label: "Phiếu lương",
+    key: "NVPL",
+    icon: <AuditOutlined />,
+  },
+  {
+    label: "Khen thưởng kỉ luật",
+    key: "NVKTKL",
+    icon: <ContactsOutlined />,
+  },
+  {
+    label: "Hợp đồng",
+    key: "NVHDLD",
+    icon: <ContactsOutlined />,
   },
 ];
 const Layout = [

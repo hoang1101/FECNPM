@@ -14,11 +14,20 @@ const Edit = () => {
   const data = useLocation();
   const [dataHV, setDataHV] = useState([]);
   const [dataCV, setDataCV] = useState([]);
+  const [dataIF, setDataIF] = useState([]);
 
   const DSHV = async () => {
     try {
       const response = await ManagerAdmin.DSHV();
       setDataHV(response);
+    } catch (error) {
+      console.log("Error is", error);
+    }
+  };
+  const DSNIF = async () => {
+    try {
+      const response = await ManagerAdmin.NVNIF();
+      setDataIF(response);
     } catch (error) {
       console.log("Error is", error);
     }
@@ -61,6 +70,7 @@ const Edit = () => {
   useEffect(() => {
     DSHV();
     DSCV();
+    DSNIF();
   }, []);
   const editProfile = async (body) => {
     try {
@@ -95,11 +105,19 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống họ tên!",
+            message: "Không thể bỏ trống mã nhân viên!",
           },
         ]}
       >
-        <Input />
+        <Select>
+          {dataIF.map((child) => {
+            return (
+              <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                {child?.MaNV} - {child?.HoTen}
+              </Select.Option>
+            );
+          })}
+        </Select>
       </Form.Item>
       <Form.Item
         label="Họ tên :"

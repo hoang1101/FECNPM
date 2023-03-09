@@ -10,7 +10,20 @@ export const informSucess = (handal, text) => {
     buttons: "Đồng ý",
   }).then((yes) => {
     if (yes) {
-      handal();
+      // handal();
+    }
+  });
+};
+export const loginError = (handal, text) => {
+  swal({
+    title: "Tên đăng nhập hoặc mật khẩu không khớp !",
+    text: text ? text : `Mời bạn đăng nhập lại.`,
+    icon: "warning",
+    // dangerMode: true,
+    buttons: "Đồng ý",
+  }).then((yes) => {
+    if (yes) {
+      // handal();
     }
   });
 };
@@ -218,5 +231,17 @@ export const showDeleteUserEditFail = () => {
       closeButton: "!text-[#101828] !focus:outline-0",
     },
     buttonsStyling: false,
+  });
+};
+export const showDeleteOderModal = (onAccept) => {
+  swal({
+    title: "Bạn có muốn chắc chắn xóa hàng này không",
+    icon: "warning",
+    // dangerMode: true,
+    buttons: ["Hủy", "Đồng Ý"],
+  }).then((yes) => {
+    if (yes) {
+      onAccept();
+    }
   });
 };

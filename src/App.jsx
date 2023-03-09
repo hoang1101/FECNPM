@@ -1,7 +1,7 @@
-import { Suspense } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import AuthProvider from './context/AuthProvider';
-import RouteApp from './routes/RouteApp';
+import { Suspense } from "react";
+import { BrowserRouter } from "react-router-dom";
+import AuthProvider from "./context/AuthProvider";
+import RouteApp from "./routes/RouteApp";
 const App = () => {
   return (
     <BrowserRouter>

@@ -1,4 +1,5 @@
 import Vite from "@/assets/logohonda.png";
+import { loginError } from "@/components/AccountModal/Modal";
 import { useAuth } from "@/context/AuthProvider";
 import { AuthService } from "@/services";
 import { Button, Form, Input, Row } from "antd";
@@ -20,11 +21,14 @@ const Login = () => {
           token: res?.response?.token,
           role: res?.data?.MaQuyen,
           user: res?.data?.TenTaiKhoan,
+          manv: res?.data?.MaNV,
         };
         auth.login(data);
         navigate("/", { replace: true });
+      } else {
       }
     } catch (err) {
+      loginError();
       console.log(err);
     }
   };

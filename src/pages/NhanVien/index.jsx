@@ -6,6 +6,7 @@ import NVHD from "./DanhSach";
 const App = () => {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
 
   const abc = async () => {
     try {
@@ -28,9 +29,20 @@ const App = () => {
       console.log("Error is:", error);
     }
   };
+  const aaa = async () => {
+    try {
+      const response = await ManagerAdmin.NVCHD();
+      //   if (response?.success) {
+      setData3(response);
+      //   }
+    } catch (error) {
+      console.log("Error is:", error);
+    }
+  };
   useEffect(() => {
     abc();
     ccc();
+    aaa();
   }, []);
   return (
     <div>
@@ -42,7 +54,7 @@ const App = () => {
           <NVHD data={data2} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="Danh sách nhân viên chưa ký đồng" key="3">
-          {/* <NVHD data={1} /> */}
+          <NVHD data={data3} />
         </Tabs.TabPane>
       </Tabs>
     </div>

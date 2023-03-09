@@ -28,7 +28,8 @@ export const columns = (setSuccess) => {
     {
       title: "Mật Khẩu",
       key: "3",
-      dataIndex: "MatKhau",
+      // dataIndex: "MatKhau",
+      render: () => <>************</>,
     },
     {
       title: "Quyền",

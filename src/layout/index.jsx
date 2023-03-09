@@ -1,16 +1,16 @@
-import { getFirstPathCode } from '@/utils/getFirstPathCode';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu } from 'antd';
-import React, { Suspense, useEffect, useState } from 'react';
-import { useNavigate, Outlet, useLocation } from 'react-router-dom';
-import HeaderComponent from './Header';
-import './index.less';
-import listMenu from './menus';
-import Logo from '@/assets/logohonda.png';
-import ReactLogo from '@/assets/react.svg';
-import { keyToken } from '@/constant/auth';
-import routerLinks from '@/utils/router-links';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { getFirstPathCode } from "@/utils/getFirstPathCode";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Breadcrumb, Card, Layout, Menu } from "antd";
+import React, { Suspense, useEffect, useState } from "react";
+import { useNavigate, Outlet, useLocation } from "react-router-dom";
+import HeaderComponent from "./Header";
+import "./index.less";
+import listMenu from "./menus";
+import Logo from "@/assets/logohonda.png";
+import ReactLogo from "@/assets/react.svg";
+import { keyToken } from "@/constant/auth";
+import routerLinks from "@/utils/router-links";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const { Header, Sider, Content } = Layout;
 const LayoutPage = () => {
@@ -35,10 +35,10 @@ const LayoutPage = () => {
         </div>
         <Menu
           className="menu"
-          defaultSelectedKeys={['1']}
+          defaultSelectedKeys={["1"]}
           onClick={(info) => {
             !localStorage.getItem(keyToken)
-              ? navigate(routerLinks('Login'), { replace: true })
+              ? navigate(routerLinks("Login"), { replace: true })
               : navigate(routerLinks(info.key));
           }}
           theme="#c00"
@@ -53,17 +53,19 @@ const LayoutPage = () => {
         <Suspense fallback={<h1>Loading post...</h1>}>
           <Layout
             style={{
-              padding: '0 24px 24px',
-              backgroundColor: '#F3F4F6',
+              padding: "0 24px 24px",
+              backgroundColor: "#F3F4F6",
             }}
           >
-            <Breadcrumb style={{ margin: '16px 0' }}></Breadcrumb>
+            <Breadcrumb style={{ margin: "16px 0" }}></Breadcrumb>
             {/*  */}
             <Content
               className="hihi main-layout-page-content"
-              style={{ overflow: 'hidden' }}
+              style={{ overflow: "auto" }}
             >
-              <Outlet />
+              <Card>
+                <Outlet />
+              </Card>
             </Content>
           </Layout>
         </Suspense>
