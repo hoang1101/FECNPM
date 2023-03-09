@@ -18,6 +18,14 @@ const AdminService = {
       console.log(error);
     }
   },
+  quyen: async () => {
+    try {
+      const url = `/${ADMIN_API_PATH}/role`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   acountEdit: async (MaNV, data) => {
     try {
       const url = `/${ADMIN_API_PATH}/update/${MaNV}`;

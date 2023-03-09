@@ -125,7 +125,7 @@ const App = () => {
             },
           ]}
         >
-          <Input type="number" min={0} max={30} />
+          <Input type="number" min={0} max={5} />
         </Form.Item>
         <Form.Item
           style={{
@@ -140,7 +140,7 @@ const App = () => {
             },
           ]}
         >
-          <Input type="number" />
+          <Input type="number" max={5000000} min={0} />
         </Form.Item>
         <Button
           style={{
