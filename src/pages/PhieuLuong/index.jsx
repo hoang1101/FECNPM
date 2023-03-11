@@ -152,6 +152,7 @@ const App = () => {
           return record.__uniqueId;
         }}
       />
+      <>Total: {data.length}</>
     </div>
   );
 };

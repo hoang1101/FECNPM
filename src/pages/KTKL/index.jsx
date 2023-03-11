@@ -1,7 +1,7 @@
 import { informError, informSucess } from "@/components/AccountModal/Modal";
 import { ManagerAdmin } from "@/services";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Space, Table } from "antd";
+import { Button, Input, Pagination, Space, Table } from "antd";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import Highlighter from "react-highlight-words";
@@ -165,7 +165,27 @@ const App = () => {
           if (!record.__uniqueId) record.__uniqueId = ++uniqueId;
           return record.__uniqueId;
         }}
+        pagination={
+          {
+            // pageSize: 10,
+            // showTotal,
+            // scroll: {
+            //   x: 1500,
+            //   y: 300,
+            // },
+          }
+        }
       />
+      <>Total: {data.length}</>
+      {/* <Pagination
+        total={data.length}
+        showTotal={(total, range) => {
+          // console.log(range);
+          return `Total: ${total} items`;
+        }}
+        defaultPageSize={10}
+        defaultCurrent={1}
+      /> */}
     </div>
   );
 };

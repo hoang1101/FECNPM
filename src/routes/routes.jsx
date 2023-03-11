@@ -146,6 +146,11 @@ export const routesManager = [
     path: routerLinks("createKTKL"), // key ben router link
     component: React.lazy(() => import("@/pages/KTKL/createKTKL")),
   },
+  {
+    label: "THONGKE",
+    path: routerLinks("THONGKE"), // key ben router link
+    component: React.lazy(() => import("@/pages/ThongKe/ds")),
+  },
 ];
 const routes = [
   {

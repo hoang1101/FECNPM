@@ -7,6 +7,7 @@ const App = () => {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
 
   const abc = async () => {
     try {
@@ -39,10 +40,21 @@ const App = () => {
       console.log("Error is:", error);
     }
   };
+  const ddd = async () => {
+    try {
+      const response = await ManagerAdmin.TKNVSHH();
+      //   if (response?.success) {
+      setData4(response);
+      //   }
+    } catch (error) {
+      console.log("Error is:", error);
+    }
+  };
   useEffect(() => {
     abc();
     ccc();
     aaa();
+    ddd();
   }, []);
   return (
     <div>
@@ -55,6 +67,9 @@ const App = () => {
         </Tabs.TabPane>
         <Tabs.TabPane tab="Danh sách nhân viên chưa ký đồng" key="3">
           <NVHD data={data3} />
+        </Tabs.TabPane>
+        <Tabs.TabPane tab="Danh sách nhân viên sắp hết hợp đồng (<1T)" key="4">
+          <NVHD data={data4?.data} />
         </Tabs.TabPane>
       </Tabs>
     </div>

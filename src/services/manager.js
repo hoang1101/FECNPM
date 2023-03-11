@@ -245,5 +245,50 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // thong ke nhan vien nghi lam
+  TKNVNL: async () => {
+    try {
+      const url = `${MANAGER_API_PATH}/TKNVNL`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // thong ke nhan vien dang lam
+  TKNV: async () => {
+    try {
+      const url = `${MANAGER_API_PATH}/TKNV`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // thong ke nhan vien sap het hop dong
+  TKNVSHH: async () => {
+    try {
+      const url = `${MANAGER_API_PATH}/TKNVSHH`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // thong ke nhan vien theo hoc van
+  TKNVHV: async (MaHocVan) => {
+    try {
+      const url = `${MANAGER_API_PATH}/TKNVHV/${MaHocVan}`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  // thong ke nhan vien theo hoc van
+  TKNVCV: async (MaChucVu) => {
+    try {
+      const url = `${MANAGER_API_PATH}/TKNVCV/${MaChucVu}`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 export default ManagerAdmin;

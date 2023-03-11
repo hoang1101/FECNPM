@@ -40,6 +40,8 @@ const Util = (name) => {
     NVPL: "/NVPL",
     NVKTKL: "/NVKTKL",
     TTCN: "/TTCN",
+
+    THONGKE: "/THONGKE",
   };
   return array[name];
 };

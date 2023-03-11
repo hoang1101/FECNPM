@@ -38,11 +38,6 @@ export const columns = (getColumnSearchProps) => {
       dataIndex: "LCB",
     },
     {
-      title: "Số ngày công",
-      key: "6",
-      dataIndex: "SoNgayCong",
-    },
-    {
       title: "Số ngày nghỉ",
       key: "7",
       dataIndex: "SoNgayNghi",

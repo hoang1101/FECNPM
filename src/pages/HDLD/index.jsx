@@ -33,6 +33,7 @@ const App = () => {
     confirm();
     setSearchText(selectedKeys[0]);
     setSearchedColumn(dataIndex);
+    console.log(selectedKeys[0]);
   };
   const handleReset = (clearFilters) => {
     clearFilters();
@@ -150,6 +151,7 @@ const App = () => {
           return record.__uniqueId;
         }}
       />
+      <>Total: {data.length}</>
     </div>
   );
 };

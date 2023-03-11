@@ -140,6 +140,11 @@ const LayoutManager = [
       },
     ],
   },
+  {
+    label: "Thống kê",
+    key: "THONGKE",
+    icon: <AuditOutlined />,
+  },
 ];
 const LayoutUser = [
   {

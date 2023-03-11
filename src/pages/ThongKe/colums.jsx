@@ -2,7 +2,7 @@ import { EditOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import routerLinks from "@/utils/router-links";
 
-export const columns = (getColumnSearchProps, dataHV, dataCV, data1) => {
+export const columns = (getColumnSearchProps, dataHV, dataCV) => {
   const navigate = useNavigate();
   return [
     {
@@ -80,60 +80,18 @@ export const columns = (getColumnSearchProps, dataHV, dataCV, data1) => {
         </>
       ),
     },
-    {
-      title: "Trạng thái",
-      key: "11",
-      render: (_, info) => {
-        const check = () => {
-          for (const i of data1) {
-            if (i.MaNV === info.MaNV) {
-              return true;
-            }
-          }
-          return false;
-        };
-        return (
-          <>
-            {!check() ? (
-              <>
-                <EditOutlined
-                  onClick={() => {
-                    navigate(routerLinks("editProfile"), { state: { info } });
-                  }}
-                />
-              </>
-            ) : (
-              <EditOutlined disabled={true} style={{ color: "#888888" }} />
-            )}
-            {/* {data1.map((child) => {
-            if (child?.MaNV !== info?.MaNV) {
-              return (
-                <>
-                  
-                  <EditOutlined
-                    onClick={() => {
-                      navigate(routerLinks("editPL"), { state: { info } });
-                    }}
-                  />
-                </>
-              );
-            } else {
-              return (
-                <EditOutlined disabled={true} style={{ color: "#888888" }} />
-              );
-            }
-          })} */}
-          </>
-        );
-      },
-
-      /* <>
-            <EditOutlined
-              onClick={() => {
-                navigate(routerLinks("editProfile"), { state: { info } });
-              }}
-            />
-          </> */
-    },
+    // {
+    //   title: "",
+    //   key: "11",
+    //   render: (_, info) => (
+    //     <>
+    //       <EditOutlined
+    //         onClick={() => {
+    //           navigate(routerLinks("editProfile"), { state: { info } });
+    //         }}
+    //       />
+    //     </>
+    //   ),
+    // },
   ];
 };

@@ -134,6 +134,7 @@ const App = () => {
               required: true,
               message: "Không thể bỏ trống mật khẩu!",
             },
+            { max: 8, message: "Không thể quá 8 ký tự khẩu!" },
           ]}
         >
           <Input.Password />

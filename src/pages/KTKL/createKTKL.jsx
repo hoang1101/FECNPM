@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { ManagerAdmin } from "@/services";
 import routerLinks from "@/utils/router-links";
 import {
+  informError,
   informSucess,
   showDeleteUserModal,
 } from "@/components/AccountModal/Modal";
@@ -43,11 +44,11 @@ const App = () => {
           LiDo: res?.data?.LiDo,
           SoTien: res?.data?.SoTien,
         };
-        navigate(routerLinks("DSKTKL"), { replace: true });
+
+        informSucess(navigate(routerLinks("DSKTKL")));
       }
-      informSucess();
     } catch (error) {
-      showDeleteUserModal();
+      informError();
     }
   };
   useEffect(() => {

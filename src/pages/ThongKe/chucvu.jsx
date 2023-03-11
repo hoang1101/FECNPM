@@ -1,36 +1,34 @@
 import { ManagerAdmin } from "@/services";
 import { SearchOutlined } from "@ant-design/icons";
-import { Button, Input, Pagination, Space, Table } from "antd";
+import { Button, Form, Input, Pagination, Select, Space, Table } from "antd";
 import { useEffect, useRef, useState } from "react";
 import Highlighter from "react-highlight-words";
-import { columns } from "./columns";
-const App = ({ data }) => {
+import { columns } from "./colums";
+const App = ({}) => {
   const [dataHV, setDataHV] = useState([]);
   const [dataCV, setDataCV] = useState([]);
+  const [dataTK, setDataTK] = useState([]);
+  //   const [data, setData] = useState(true);
 
   const [searchText, setSearchText] = useState("");
   const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
-  const [data1, setData1] = useState([]);
-  const abc = async () => {
-    try {
-      const response1 = await ManagerAdmin.NVHD();
-      const response2 = await ManagerAdmin.NVKHD();
 
-      //   if (response?.success) {
-
-      setData1([...response1, ...response2]);
-      //   }
-    } catch (error) {
-      console.log("Error is:", error);
-    }
-  };
   useEffect(() => {
     DSHV();
     DSCV();
-    abc();
+    // TKNVHV();
   }, []);
 
+  const TKNVHV = async (value) => {
+    try {
+      const response = await ManagerAdmin.TKNVCV(value?.MaChucVu);
+      console.log(response, "dsad");
+      setDataTK(response);
+    } catch (error) {
+      console.log("Error is", error);
+    }
+  };
   const DSHV = async () => {
     try {
       const response = await ManagerAdmin.DSHV();
@@ -47,7 +45,6 @@ const App = ({ data }) => {
       console.log("Error is", error);
     }
   };
-
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -159,23 +156,49 @@ const App = ({ data }) => {
         text
       ),
   });
+
   return (
     <>
+      <Form onFinish={TKNVHV} autoComplete="off">
+        <Form.Item
+          label="Tên chức vụ:"
+          name="MaChucVu"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống chức vụ!",
+            },
+          ]}
+        >
+          <Select>
+            {dataCV.map((child) => {
+              return (
+                <Select.Option key={child?.MaChucVu} value={child?.MaChucVu}>
+                  {child?.TenChucVu}
+                </Select.Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Form.Item>
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+            //   setData={false}
+            //   onClick={(e) => TKNVHV(e.target.value)}
+          >
+            Lọc
+          </Button>
+        </Form.Item>
+      </Form>
       <Table
-        columns={columns(getColumnSearchProps, dataHV, dataCV, data1)}
-        dataSource={data}
-        rowKey={"MaNV"}
-        pagination={false}
+        columns={columns(getColumnSearchProps, dataHV, dataCV)}
+        dataSource={dataTK?.data}
+        rowKey={(record) => record.MaNV}
+        // pagination={length}
       />
-      <Pagination
-        total={data.length}
-        showTotal={(total, range) => {
-          // console.log(range);
-          return `Total: ${total} items`;
-        }}
-        defaultPageSize={20}
-        defaultCurrent={1}
-      />
+      <>Total: {dataTK?.count}</>
     </>
   );
 };

@@ -101,21 +101,6 @@ const App = () => {
           style={{
             marginBottom: 20,
           }}
-          label="Số ngày công:"
-          name="SoNgayCong"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
-            },
-          ]}
-        >
-          <Input type="number" min={0} max={26} />
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
-          }}
           label="Số ngày nghỉ:"
           name="SoNgayNghi"
           rules={[
@@ -125,7 +110,7 @@ const App = () => {
             },
           ]}
         >
-          <Input type="number" min={0} max={5} />
+          <Input type="number" min={0} max={4} defaultValue={0} />
         </Form.Item>
         <Form.Item
           style={{

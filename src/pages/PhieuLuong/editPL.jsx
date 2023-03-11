@@ -104,18 +104,7 @@ const Edit = () => {
           defaultValue={26}
         />
       </Form.Item>
-      <Form.Item
-        label="Số ngày công:"
-        name="SoNgayCong"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
-          },
-        ]}
-      >
-        <Input type="number" min={0} max={31} defaultValue={0} />
-      </Form.Item>
+
       <Form.Item
         label="Số ngày nghỉ:"
         name="SoNgayNghi"
@@ -126,7 +115,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" min={0} max={4} />
       </Form.Item>
       <Form.Item
         label="Tiền ứng:"
@@ -138,7 +127,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input type="number" min={0} defaultValue={0} />
+        <Input type="number" min={0} max={5000000} />
       </Form.Item>
 
       <Form.Item
