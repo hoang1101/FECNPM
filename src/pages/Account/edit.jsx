@@ -1,8 +1,8 @@
-import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Form, Input } from "antd";
-import routerLinks from "@/utils/router-links";
-import { informSucess } from "@/components/AccountModal/Modal";
-import { AdminService } from "@/services";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Button, Form, Input } from 'antd';
+import routerLinks from '@/utils/router-links';
+import { informSucess } from '@/components/AccountModal/Modal';
+import { AdminService } from '@/services';
 const Edit = () => {
   const navigate = useNavigate();
   const data = useLocation();
@@ -19,7 +19,7 @@ const Edit = () => {
     try {
       const req = await AdminService.acountEdit(data?.state?.info?.MaNV, body);
       if (req.success) {
-        informSucess(navigate(routerLinks("accountlist")));
+        informSucess(navigate(routerLinks('accountlist')));
       }
     } catch (error) {
       console.log(error);
@@ -51,9 +51,10 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: 'Không thể bỏ trống tên tài khoản!',
           },
         ]}
+        style={{ display: 'none' }}
       >
         <Input />
       </Form.Item>
@@ -64,7 +65,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống mật khẩu!",
+            message: 'Không thể bỏ trống mật khẩu!',
           },
         ]}
       >
@@ -77,7 +78,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống quyền!",
+            message: 'Không thể bỏ trống quyền!',
           },
         ]}
       >
@@ -91,7 +92,7 @@ const Edit = () => {
         }}
       >
         <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+          style={{ backgroundColor: '#c00', borderColor: '#c00' }}
           type="primary"
           htmlType="submit"
         >

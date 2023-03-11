@@ -1,21 +1,25 @@
-import React from "react";
-import Ava from "@/assets/tlt2.jpg";
-import { Dropdown, Menu } from "antd";
+import React from 'react';
+import Ava from '@/assets/tlt2.jpg';
+import { Dropdown, Menu } from 'antd';
 import {
   LogoutOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-} from "@ant-design/icons";
-import { Header } from "antd/lib/layout/layout";
-import { useAuth } from "@/context/AuthProvider";
-
+} from '@ant-design/icons';
+import { Header } from 'antd/lib/layout/layout';
+import { useAuth } from '@/context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import routerLinks from '@/utils/router-links';
 const HeaderComponent = ({ collapsed, handleCollapsed }) => {
   const auth = useAuth();
-
+  const navigate = useNavigate();
   const menu = (
     <Menu>
       <Menu.Item key="1">
         <span>
+          <div onClick={() => navigate(routerLinks('ChangePassword'))}>
+            Đổi mật Khẩu
+          </div>
           <LogoutOutlined />
           <span onClick={() => auth.logout()}>Logout</span>
         </span>

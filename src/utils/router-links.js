@@ -1,47 +1,48 @@
 const Util = (name) => {
   const array = {
-    Login: "/auth/login",
-    Dashboard: "/",
+    Login: '/auth/login',
+    Dashboard: '/',
+    ChangePassword: '/changePassword',
 
-    accountlist: "/accountList",
-    moreaccount: "/Account",
+    accountlist: '/accountList',
+    moreaccount: '/Account',
 
-    editAcount: "/Edit",
+    editAcount: '/Edit',
 
-    DSNV: "/DSNV",
-    Profile: "/profile",
-    editProfile: "/editProfile",
+    DSNV: '/DSNV',
+    Profile: '/profile',
+    editProfile: '/editProfile',
 
-    DSCV: "/DSCV",
-    editCV: "/editCV",
-    createCV: "/createCV",
+    DSCV: '/DSCV',
+    editCV: '/editCV',
+    createCV: '/createCV',
 
-    DSHV: "/DSHV",
-    editHV: "/editHV",
-    createHV: "/createHV",
+    DSHV: '/DSHV',
+    editHV: '/editHV',
+    createHV: '/createHV',
 
-    DSBL: "/DSBL",
-    editBL: "/editBL",
-    createBL: "/createBL",
+    DSBL: '/DSBL',
+    editBL: '/editBL',
+    createBL: '/createBL',
 
-    DSHDLD: "/DSHDLD",
-    editHDLD: "/editHDLD",
-    createHDLD: "/createHDLD",
+    DSHDLD: '/DSHDLD',
+    editHDLD: '/editHDLD',
+    createHDLD: '/createHDLD',
 
-    DSPL: "/DSPL",
-    editPL: "/editPL",
-    createPL: "/createPL",
+    DSPL: '/DSPL',
+    editPL: '/editPL',
+    createPL: '/createPL',
 
-    DSKTKL: "/DSKTKL",
-    editKTKL: "/editKTKL",
-    createKTKL: "/createKTKL",
+    DSKTKL: '/DSKTKL',
+    editKTKL: '/editKTKL',
+    createKTKL: '/createKTKL',
 
-    NVHDLD: "/NVHDLD",
-    NVPL: "/NVPL",
-    NVKTKL: "/NVKTKL",
-    TTCN: "/TTCN",
+    NVHDLD: '/NVHDLD',
+    NVPL: '/NVPL',
+    NVKTKL: '/NVKTKL',
+    TTCN: '/TTCN',
 
-    THONGKE: "/THONGKE",
+    THONGKE: '/THONGKE',
   };
   return array[name];
 };

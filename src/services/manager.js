@@ -1,5 +1,5 @@
-import { MANAGER_API_PATH } from "@/constant/api";
-import axiosClient from "./axiosClient";
+import { MANAGER_API_PATH } from '@/constant/api';
+import axiosClient from './axiosClient';
 
 const ManagerAdmin = {
   // tao tai khoan
@@ -97,6 +97,23 @@ const ManagerAdmin = {
     try {
       const url = `/${MANAGER_API_PATH}/editHDLD/${MaHDLD}`;
       return axiosClient.put(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //Khóa hợp dòng lao động
+  lockHDLD: async (id) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/huyHDLD/${id}`;
+      return axiosClient.put(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  unLockHDLD: async (id) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/bohuyHDLD/${id}`;
+      return axiosClient.put(url);
     } catch (error) {
       console.log(error);
     }

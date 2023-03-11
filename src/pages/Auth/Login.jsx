@@ -1,14 +1,14 @@
-import Vite from "@/assets/logohonda.png";
-import { loginError } from "@/components/AccountModal/Modal";
-import { useAuth } from "@/context/AuthProvider";
-import { AuthService } from "@/services";
-import { Button, Form, Input, Row } from "antd";
-import FormItem from "antd/es/form/FormItem";
-import { Fragment } from "react";
-import { useNavigate } from "react-router-dom";
-import "./index.less";
+import Vite from '@/assets/logohonda.png';
+import { loginError } from '@/components/AccountModal/Modal';
+import { useAuth } from '@/context/AuthProvider';
+import { AuthService } from '@/services';
+import { Button, Form, Input, Row } from 'antd';
+import FormItem from 'antd/es/form/FormItem';
+import { Fragment } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './index.less';
 
-const Login = () => {
+const index = () => {
   const auth = useAuth();
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const Login = () => {
           manv: res?.data?.MaNV,
         };
         auth.login(data);
-        navigate("/", { replace: true });
+        navigate('/', { replace: true });
       } else {
       }
     } catch (err) {
@@ -36,10 +36,10 @@ const Login = () => {
     <Fragment>
       <div
         style={{
-          height: "100vh",
-          width: "100vw",
-          overflowY: "hidden",
-          backgroundColor: "#f8f8f8",
+          height: '100vh',
+          width: '100vw',
+          overflowY: 'hidden',
+          backgroundColor: '#f8f8f8',
         }}
       >
         <div className="form-Login">
@@ -71,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default index;
