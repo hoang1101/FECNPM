@@ -11,6 +11,14 @@ const UserAdmin = {
       console.log(error);
     }
   },
+  DSHDLD: async (MaNV) => {
+    try {
+      const url = `${USERS_API_PATH}/DSHDBH/${MaNV}`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   NVKTKL: async (MaNV) => {
     try {
       const url = `${USERS_API_PATH}/DSKTKLNV/${MaNV}`;

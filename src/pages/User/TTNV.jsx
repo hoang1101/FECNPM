@@ -175,7 +175,7 @@ const Edit = () => {
                 },
               ]}
             >
-              <Input />
+              <Input type="number" />
             </Form.Item>
             <Form.Item
               label="Email:"

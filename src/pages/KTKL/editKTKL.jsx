@@ -73,7 +73,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống tên nhân viên!",
           },
         ]}
       >
@@ -93,7 +93,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống mô tả!",
+            message: "Không thể bỏ trống hình thức!",
           },
         ]}
       >
@@ -108,7 +108,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống mô tả!",
+            message: "Không thể bỏ trống lí do!",
           },
         ]}
       >
@@ -120,11 +120,11 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống mô tả!",
+            message: "Không thể bỏ trống số tiền!",
           },
         ]}
       >
-        <Input />
+        <Input type="number" max={5000000} />
       </Form.Item>
       <Form.Item
         wrapperCol={{

@@ -47,10 +47,10 @@ const App = () => {
         navigate(routerLinks("DSPL"), { replace: true });
         informSucess();
       } else {
-        informError();
       }
     } catch (error) {
-      showDeleteUserModal();
+      informError();
+      // showDeleteUserModal();
     }
   };
   useEffect(() => {
@@ -78,12 +78,12 @@ const App = () => {
           style={{
             marginBottom: 20,
           }}
-          label="Mã nhân viên:"
+          label="Họ tên nhân viên:"
           name="MaNV"
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống tên nhân viên!",
             },
           ]}
         >
@@ -106,7 +106,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống số ngày nghỉ!",
             },
           ]}
         >
@@ -121,7 +121,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống số tiền ứng!",
             },
           ]}
         >

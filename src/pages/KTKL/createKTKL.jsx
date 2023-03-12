@@ -81,7 +81,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống tên nhân viên!",
             },
           ]}
         >
@@ -104,7 +104,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống hình thức!",
             },
           ]}
         >
@@ -123,7 +123,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống lí do!",
             },
           ]}
         >
@@ -138,11 +138,11 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống số tiền!",
             },
           ]}
         >
-          <Input />
+          <Input type="number" max={5000000} />
         </Form.Item>
         <Button
           style={{

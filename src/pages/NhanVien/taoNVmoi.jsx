@@ -64,7 +64,8 @@ const Edit = () => {
       }
       informSucess();
     } catch (error) {
-      showDeleteUserModal();
+      informError();
+      // showDeleteUserModal();
     }
   };
   useEffect(() => {
@@ -129,7 +130,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="text" />
       </Form.Item>
       <Form.Item
         label="Ngày Sinh:"
@@ -168,7 +169,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
       <Form.Item
         label="Số điện thoại:"
@@ -180,7 +181,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
       <Form.Item
         label="Email:"
@@ -216,7 +217,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="text" />
       </Form.Item>
       <Form.Item
         label="Chức vụ:"

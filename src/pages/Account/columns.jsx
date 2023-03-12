@@ -12,7 +12,7 @@ import lock from "./lock";
 import unLock from "./unLock";
 import { showLockUserModal } from "@/components/AccountModal/Modal";
 
-export const columns = (setSuccess) => {
+export const columns = (setSuccess, dataQ) => {
   const navigate = useNavigate();
   return [
     {
@@ -35,6 +35,15 @@ export const columns = (setSuccess) => {
       title: "Quyền",
       key: "4",
       dataIndex: "MaQuyen",
+      render: (_, info) => (
+        <>
+          {dataQ.map((child) => {
+            if (child?.MaQuyen === info?.MaQuyen) {
+              return <div>{child?.TenQuyen}</div>;
+            }
+          })}
+        </>
+      ),
     },
 
     {

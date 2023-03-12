@@ -1,9 +1,10 @@
 import {
+  informError,
   showApproveModal,
   showConfirmError,
   showConfirmSuccess,
-} from '@/components/AccountModal/Modal';
-import { ManagerAdmin } from '@/services';
+} from "@/components/AccountModal/Modal";
+import { ManagerAdmin } from "@/services";
 
 export const LockHDLD = async (id) => {
   try {
@@ -12,6 +13,8 @@ export const LockHDLD = async (id) => {
     if (req?.success) {
       showConfirmSuccess();
       return true;
+    } else {
+      informError();
     }
     // showConfirmSuccess();
   } catch (error) {
@@ -25,6 +28,8 @@ export const unLockHDLD = async (id) => {
     if (req?.success) {
       showConfirmSuccess();
       return true;
+    } else {
+      informError();
     }
     // showConfirmSuccess();
   } catch (error) {

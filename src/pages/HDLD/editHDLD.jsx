@@ -1,13 +1,40 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, DatePicker, Form, Input } from "antd";
+import { Button, DatePicker, Form, Input, Select } from "antd";
 import routerLinks from "@/utils/router-links";
 import { informError, informSucess } from "@/components/AccountModal/Modal";
 import { ManagerAdmin } from "@/services";
 import moment from "moment";
+import { useEffect, useState } from "react";
 const Edit = () => {
   const navigate = useNavigate();
   const data = useLocation();
 
+  const [data1, setData1] = useState([]);
+  const [dataBL, setDataBL] = useState([]);
+  useEffect(() => {
+    ccc();
+    BLlist();
+  }, []);
+  const BLlist = async () => {
+    try {
+      const response = await ManagerAdmin.DSBL();
+      setDataBL(response);
+    } catch (error) {
+      console.log("Error : ", error);
+    }
+  };
+  const ccc = async () => {
+    try {
+      const response1 = await ManagerAdmin.KT();
+      const response2 = await ManagerAdmin.NVCHD();
+      //   if (response?.success) {
+      setData1([...response1, ...response2]);
+      //   }
+      console.log(response1, response2);
+    } catch (error) {
+      console.log("Error is:", error);
+    }
+  };
   const onFinish = (values) => {
     editHDLD({
       MaNV: values.MaNV,
@@ -23,9 +50,9 @@ const Edit = () => {
       if (req.success) {
         informSucess(navigate(routerLinks("DSHDLD")));
       } else {
-        informError();
       }
     } catch (error) {
+      informError();
       console.log(error);
     }
   };
@@ -57,16 +84,24 @@ const Edit = () => {
         style={{
           marginBottom: 20,
         }}
-        label="Họ tên nhân viên:"
+        label="Mã nhân viên:"
         name="MaNV"
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: "Không thể bỏ trống mã nhân viên!",
           },
         ]}
       >
-        <Input />
+        <Select>
+          {data1.map((child) => {
+            return (
+              <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                {child?.MaNV} - {child?.HoTen}
+              </Select.Option>
+            );
+          })}
+        </Select>
       </Form.Item>
       <Form.Item
         style={{
@@ -77,7 +112,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: "Không thể bỏ trống ngày bắt đầu!",
           },
         ]}
       >
@@ -92,7 +127,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: "Không thể bỏ trống ngày kết thúc!",
           },
         ]}
       >
@@ -107,7 +142,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: "Không thể bỏ trống ngày ký!",
           },
         ]}
       >
@@ -122,11 +157,19 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên tài khoản!",
+            message: "Không thể bỏ trống mã bậc lương!",
           },
         ]}
       >
-        <Input />
+        <Select>
+          {dataBL.map((child) => {
+            return (
+              <Select.Option key={child?.MaBac} value={child?.MaBac}>
+                {child?.MaBac} - {child?.HeSo}
+              </Select.Option>
+            );
+          })}
+        </Select>
       </Form.Item>
       <Button
         style={{

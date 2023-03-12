@@ -62,7 +62,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống tên chức vụ!",
             },
           ]}
         >
@@ -77,7 +77,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống mô tả chức vụ!",
             },
           ]}
         >

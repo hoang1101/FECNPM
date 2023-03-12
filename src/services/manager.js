@@ -1,5 +1,5 @@
-import { MANAGER_API_PATH } from '@/constant/api';
-import axiosClient from './axiosClient';
+import { MANAGER_API_PATH } from "@/constant/api";
+import axiosClient from "./axiosClient";
 
 const ManagerAdmin = {
   // tao tai khoan
@@ -83,6 +83,15 @@ const ManagerAdmin = {
       console.log(error);
     }
   },
+  // danh sach hop dong lao dong het han
+  DSHDLDHH: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/DSHDLDHH`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   //tao hợp đồng lao động
   createHDLD: async (data) => {
     try {
@@ -158,6 +167,14 @@ const ManagerAdmin = {
   NVKHD: async () => {
     try {
       const url = `/${MANAGER_API_PATH}/NVKHD`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  KT: async () => {
+    try {
+      const url = `/${MANAGER_API_PATH}/TKCC`;
       return axiosClient.get(url);
     } catch (error) {
       console.log(error);

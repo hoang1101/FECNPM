@@ -19,8 +19,20 @@ const App = () => {
       console.log("Error is:", error);
     }
   };
+  const [dataQ, setDataQ] = useState([]);
+  const quyen = async () => {
+    try {
+      const response = await AdminService.quyen();
+      if (response) {
+        setDataQ(response);
+      }
+    } catch (error) {
+      console.log("Error is:", error);
+    }
+  };
   useEffect(() => {
     accountList();
+    quyen();
   }, []);
   useEffect(() => {
     if (success) {
@@ -32,7 +44,7 @@ const App = () => {
     <div>
       <Table
         dataSource={data}
-        columns={columns(setSuccess)}
+        columns={columns(setSuccess, dataQ)}
         rowKey={(record) => {
           if (!record.__uniqueId) record.__uniqueId = ++uniqueId;
           return record.__uniqueId;

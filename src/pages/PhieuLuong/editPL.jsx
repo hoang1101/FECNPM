@@ -65,7 +65,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống mã nhân viên!",
           },
         ]}
       >
@@ -77,7 +77,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống tháng!",
           },
         ]}
       >
@@ -93,7 +93,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống năm!",
           },
         ]}
       >
@@ -111,7 +111,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống số ngày nghỉ!",
           },
         ]}
       >
@@ -123,7 +123,7 @@ const Edit = () => {
         rules={[
           {
             required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
+            message: "Không thể bỏ trống số tiền ứng!",
           },
         ]}
       >

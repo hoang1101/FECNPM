@@ -28,7 +28,7 @@ const App = () => {
   }, []);
   const ccc = async () => {
     try {
-      const response1 = await ManagerAdmin.NVKHD();
+      const response1 = await ManagerAdmin.KT();
       const response2 = await ManagerAdmin.NVCHD();
       //   if (response?.success) {
       setData([...response1, ...response2]);
@@ -93,7 +93,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống tên nhân viên!",
             },
           ]}
         >
@@ -116,7 +116,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống ngày bắt đầu!",
             },
           ]}
         >
@@ -131,7 +131,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống ngày kết thúc!",
             },
           ]}
         >
@@ -146,7 +146,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
+              message: "Không thể bỏ trống mã bậc!",
             },
           ]}
         >

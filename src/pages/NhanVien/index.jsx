@@ -62,7 +62,7 @@ const App = () => {
         <Tabs.TabPane tab="Danh sách nhân viên đã ký hợp đồng" key="1">
           <NVHD data={data1} />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Danh sách nhân viên hết hợp đồng" key="2">
+        <Tabs.TabPane tab="Danh sách nhân viên hết có HDHD và bị hủy" key="2">
           <NVHD data={data2} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="Danh sách nhân viên chưa ký đồng" key="3">

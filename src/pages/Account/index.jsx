@@ -1,13 +1,13 @@
-import { useAuth } from '@/context/AuthProvider';
-import { Button, Form, Input, Select } from 'antd';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { AdminService, ManagerAdmin } from '@/services';
-import routerLinks from '@/utils/router-links';
+import { useAuth } from "@/context/AuthProvider";
+import { Button, Form, Input, Select } from "antd";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AdminService, ManagerAdmin } from "@/services";
+import routerLinks from "@/utils/router-links";
 import {
   informSucess,
   showDeleteUserModal,
-} from '@/components/AccountModal/Modal';
-import { useEffect, useState } from 'react';
+} from "@/components/AccountModal/Modal";
+import { useEffect, useState } from "react";
 
 const App = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const App = () => {
       const response = await ManagerAdmin.NVNIF();
       setDataIF(response);
     } catch (error) {
-      console.log('Error is', error);
+      console.log("Error is", error);
     }
   };
   const quyen = async () => {
@@ -34,7 +34,7 @@ const App = () => {
       const response = await AdminService.quyen();
       setDataQ(response);
     } catch (error) {
-      console.log('Error is', error);
+      console.log("Error is", error);
     }
   };
   useEffect(() => {
@@ -46,7 +46,7 @@ const App = () => {
     try {
       const req = await AdminService.acountEdit(dataIF?.MaNV, body);
       if (req.success) {
-        informSucess(navigate(routerLinks('accountlist')));
+        informSucess(navigate(routerLinks("accountlist")));
       }
     } catch (error) {
       console.log(error);
@@ -96,7 +96,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: 'Không thể bỏ trống mã nhân viên!',
+              message: "Không thể bỏ trống mã nhân viên!",
             },
           ]}
         >
@@ -119,7 +119,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: 'Không thể bỏ trống tên tài khoản!',
+              message: "Không thể bỏ trống tên tài khoản!",
             },
           ]}
         >
@@ -132,11 +132,11 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: 'Không thể bỏ trống mật khẩu!',
+              message: "Không thể bỏ trống mật khẩu!",
             },
-            { max: 8, message: 'Không thể quá 8 ký tự khẩu!' },
+            { max: 8, message: "Không thể quá 8 ký tự khẩu!" },
           ]}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
         >
           <Input.Password />
         </Form.Item>
@@ -149,7 +149,7 @@ const App = () => {
           rules={[
             {
               required: true,
-              message: 'Không thể bỏ trống tên tài khoản!',
+              message: "Không thể bỏ trống tên tài khoản!",
             },
           ]}
         >
@@ -165,9 +165,9 @@ const App = () => {
         </Form.Item>
         <Button
           style={{
-            backgroundColor: '#c00',
-            borderColor: '#c00',
-            marginLeft: '240px',
+            backgroundColor: "#c00",
+            borderColor: "#c00",
+            marginLeft: "240px",
             marginTop: 20,
           }}
           type="primary"

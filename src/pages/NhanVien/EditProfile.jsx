@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Button, Form, Input, Radio, Select } from "antd";
+import { Button, DatePicker, Form, Input, Radio, Select } from "antd";
 import routerLinks from "@/utils/router-links";
 import { informError, informSucess } from "@/components/AccountModal/Modal";
 import { AdminService, ManagerAdmin } from "@/services";
@@ -53,9 +53,9 @@ const Edit = () => {
       if (req.success) {
         informSucess(navigate(routerLinks("DSNV")));
       } else {
-        informError();
       }
     } catch (error) {
+      informError();
       console.log(error);
     }
   };
@@ -64,7 +64,7 @@ const Edit = () => {
       name="edit"
       initialValues={{
         HoTen: data?.state?.info?.HoTen,
-        NgaySinh: data?.state?.info?.NgaySinh,
+        // NgaySinh: data?.state?.info?.NgaySinh,
         GioiTinh: data?.state?.info?.GioiTinh,
         CCCD: data?.state?.info?.CCCD,
         SDT: data?.state?.info?.SDT,
@@ -96,7 +96,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="text" />
       </Form.Item>
       <Form.Item
         label="Ngày Sinh:"
@@ -108,7 +108,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <DatePicker />
       </Form.Item>
       <Form.Item
         label="Giới tính:"
@@ -135,7 +135,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
       <Form.Item
         label="Số điện thoại:"
@@ -147,7 +147,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="number" />
       </Form.Item>
       <Form.Item
         label="Email:"
@@ -183,7 +183,7 @@ const Edit = () => {
           },
         ]}
       >
-        <Input />
+        <Input type="text" />
       </Form.Item>
       <Form.Item
         label="Chức vụ:"
