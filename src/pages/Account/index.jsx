@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AdminService, ManagerAdmin } from "@/services";
 import routerLinks from "@/utils/router-links";
 import {
+  informError,
   informSucess,
   showDeleteUserModal,
 } from "@/components/AccountModal/Modal";
@@ -13,14 +14,14 @@ const App = () => {
   const navigate = useNavigate();
   // const data = useLocation();
   const [dataIF, setDataIF] = useState([]);
-  const [dataQ, setDataQ] = useState([]);
+
   const onFinish = (values) => {
     acountEdit({
       TenTaiKhoan: values.TenTaiKhoan,
-      MatKhau: values.MatKhau,
       MaQuyen: values.MaQuyen,
     });
   };
+  // console.log(value);
   const DSNIF = async () => {
     try {
       const response = await ManagerAdmin.NVNIF();
@@ -29,6 +30,7 @@ const App = () => {
       console.log("Error is", error);
     }
   };
+  const [dataQ, setDataQ] = useState([]);
   const quyen = async () => {
     try {
       const response = await AdminService.quyen();
@@ -41,14 +43,15 @@ const App = () => {
     DSNIF();
     quyen();
   }, []);
-  console.log(dataIF);
-  const acountEdit = async (body) => {
+
+  const onRegister = async (body) => {
     try {
-      const req = await AdminService.acountEdit(dataIF?.MaNV, body);
-      if (req.success) {
+      const req = await AdminService.register(body);
+      if (req?.success) {
         informSucess(navigate(routerLinks("accountlist")));
       }
     } catch (error) {
+      informError();
       console.log(error);
     }
   };
@@ -74,108 +77,111 @@ const App = () => {
   // };
   return (
     <>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 10,
-        }}
-        wrapperCol={{
-          span: 12,
-        }}
-        style={{
-          maxWidth: 800,
-          marginTop: 60,
-        }}
-        onFinish={onFinish}
-        // onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="Mã nhân viên :"
-          name="MaNV"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống mã nhân viên!",
-            },
-          ]}
-        >
-          <Select>
-            {dataIF.map((child) => {
-              return (
-                <Select.Option key={child?.MaNV} value={child?.MaNV}>
-                  {child?.MaNV} - {child?.HoTen}
-                </Select.Option>
-              );
-            })}
-          </Select>
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
+      <h1>Tạo tài khoản cho nhân viên: </h1>
+      <>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 10,
           }}
-          label="Tên Tài Khoản:"
-          name="TenTaiKhoan"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
-            },
-          ]}
+          wrapperCol={{
+            span: 12,
+          }}
+          style={{
+            maxWidth: 800,
+            marginTop: 60,
+          }}
+          onFinish={onRegister}
+          // onFinishFailed={onFinishFailed}
+          autoComplete="off"
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            label="Mã nhân viên :"
+            name="MaNV"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống mã nhân viên!",
+              },
+            ]}
+          >
+            <Select>
+              {dataIF.map((child) => {
+                return (
+                  <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                    {child?.MaNV} - {child?.HoTen}
+                  </Select.Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Tên Tài Khoản:"
+            name="TenTaiKhoan"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống tên tài khoản!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Mật Khẩu"
-          name="MatKhau"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống mật khẩu!",
-            },
-            { max: 8, message: "Không thể quá 8 ký tự khẩu!" },
-          ]}
-          style={{ display: "none" }}
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
-          }}
-          label="Ma Quyen:"
-          name="MaQuyen"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống tên tài khoản!",
-            },
-          ]}
-        >
-          <Select>
-            {dataQ.map((child) => {
-              return (
-                <Select.Option key={child?.MaQuyen} value={child?.MaQuyen}>
-                  {child?.MaQuyen} - {child?.TenQuyen}
-                </Select.Option>
-              );
-            })}
-          </Select>
-        </Form.Item>
-        <Button
-          style={{
-            backgroundColor: "#c00",
-            borderColor: "#c00",
-            marginLeft: "240px",
-            marginTop: 20,
-          }}
-          type="primary"
-          htmlType="submit"
-        >
-          Lưu
-        </Button>
-      </Form>
+          <Form.Item
+            label="Mật Khẩu"
+            name="MatKhau"
+            style={{ display: "none" }}
+          >
+            <Input.Password disabled={true} />
+          </Form.Item>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Ma Quyen:"
+            name="MaQuyen"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống tên tài khoản!",
+              },
+            ]}
+          >
+            <Select>
+              {dataQ.map((child) => {
+                return (
+                  <Select.Option key={child?.MaQuyen} value={child?.MaQuyen}>
+                    {child?.MaQuyen} - {child?.TenQuyen}
+                  </Select.Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            wrapperCol={{
+              offset: 8,
+              span: 16,
+            }}
+          >
+            <Button
+              style={{
+                backgroundColor: "#c00",
+                borderColor: "#c00",
+                marginLeft: "240px",
+                marginTop: 20,
+              }}
+              type="primary"
+              htmlType="submit"
+            >
+              Lưu
+            </Button>
+          </Form.Item>
+        </Form>
+      </>
     </>
   );
 };

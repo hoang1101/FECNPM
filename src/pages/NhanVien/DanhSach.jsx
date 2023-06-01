@@ -165,17 +165,19 @@ const App = ({ data }) => {
         columns={columns(getColumnSearchProps, dataHV, dataCV, data1)}
         dataSource={data}
         rowKey={"MaNV"}
-        pagination={false}
+        // pagination={false}
+        // total={data.length}
       />
-      <Pagination
-        total={data.length}
+      <>Total: {data.length} nhân viên</>
+
+      {/* <div>Total: ${total} items</div> */}
+      {/* <Pagination
         showTotal={(total, range) => {
           // console.log(range);
-          return `Total: ${total} items`;
         }}
         defaultPageSize={20}
         defaultCurrent={1}
-      />
+      /> */}
     </>
   );
 };

@@ -9,11 +9,11 @@ const lock = async (id, setSuccess) => {
       setSuccess(true);
       informSucess();
     } else {
-      setSuccess(flase);
+      setSuccess(false);
       informError();
     }
   } catch (error) {
-    setSuccess(flase);
+    setSuccess(false);
     informError();
   }
 };

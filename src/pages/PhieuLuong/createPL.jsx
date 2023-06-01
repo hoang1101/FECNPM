@@ -47,6 +47,7 @@ const App = () => {
         navigate(routerLinks("DSPL"), { replace: true });
         informSucess();
       } else {
+        informError();
       }
     } catch (error) {
       informError();
@@ -58,6 +59,7 @@ const App = () => {
   }, []);
   return (
     <>
+      <h1>Tạo phiếu lương cho nhân viên :</h1>
       <Form
         name="basic"
         labelCol={{
@@ -110,7 +112,7 @@ const App = () => {
             },
           ]}
         >
-          <Input type="number" min={0} max={4} defaultValue={0} />
+          <Input type="number" min={0} max={2} defaultValue={0} />
         </Form.Item>
         <Form.Item
           style={{

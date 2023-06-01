@@ -39,6 +39,7 @@ const App = () => {
 
   return (
     <div>
+      <h1>Danh sách học vấn :</h1>
       <Table
         dataSource={data}
         columns={columns(deleteHV)}

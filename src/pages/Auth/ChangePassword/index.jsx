@@ -1,12 +1,12 @@
 import {
   showConfirmError,
   showConfirmSuccess,
-} from '@/components/AccountModal/Modal';
-import { useAuth } from '@/context/AuthProvider';
-import { AuthService } from '@/services';
-import { Button, Form, Input } from 'antd';
-import routerLinks from '@/utils/router-links';
-import { useNavigate } from 'react-router-dom';
+} from "@/components/AccountModal/Modal";
+import { useAuth } from "@/context/AuthProvider";
+import { AuthService } from "@/services";
+import { Button, Form, Input } from "antd";
+import routerLinks from "@/utils/router-links";
+import { useNavigate } from "react-router-dom";
 const changePassWord = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const changePassWord = () => {
     try {
       const res = await AuthService.changePassword(auth?.user?.manv, value);
       if (res?.success) {
-        showConfirmSuccess(navigate(routerLinks('Dashboard')));
+        showConfirmSuccess(navigate(routerLinks("Dashboard")));
       }
     } catch (error) {
       showConfirmError();
@@ -25,7 +25,7 @@ const changePassWord = () => {
 
   return (
     <>
-      <h1 style={{ fontSize: '35px' }}>ĐỔI MẬT KHẨU</h1>
+      <h1 style={{ fontSize: "35px" }}>ĐỔI MẬT KHẨU</h1>
       <Form
         name="basic"
         labelCol={{
@@ -42,36 +42,36 @@ const changePassWord = () => {
         // autoComplete="off"
       >
         <Form.Item
-          label="Password old"
+          label="Mật khẩu cũ:"
           name="passwordOld"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Không thể bỏ trống mật khẩu cũ!",
             },
           ]}
         >
           <Input.Password />
         </Form.Item>
         <Form.Item
-          label="Password new"
+          label="Mật khẩu mới:"
           name="passwordNew"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Không thể bỏ trống mật khẩu mới!",
             },
           ]}
         >
           <Input.Password />
         </Form.Item>
         <Form.Item
-          label="Password confim"
+          label="Xác thực mật khẩu mới:"
           name="passwordConfirm"
           rules={[
             {
               required: true,
-              message: 'Please input your password!',
+              message: "Không thể bỏ trống mật khẩu xác thực!",
             },
           ]}
         >

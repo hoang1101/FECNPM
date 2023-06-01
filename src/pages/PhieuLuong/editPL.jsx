@@ -13,10 +13,10 @@ const Edit = () => {
       MaNV: values.MaNV,
       ThangTL: values.ThangTL,
       NamTL: values.NamTL,
-      SoNgayCong: values.SoNgayCong,
-      SoNgayNghi: values.SoNgayNghi,
-      TienUng: values.TienUng,
+      SoNgayNghi: values.SoNgayNghi === 0 ? "0" : values.SoNgayNghi,
+      TienUng: values.TienUng === 0 ? "0" : values.TienUng,
     });
+    console.log(values);
   };
   const editPL = async (body) => {
     // console.log(body);
@@ -27,141 +27,142 @@ const Edit = () => {
         data?.state?.info?.NamTL,
         body
       );
+      console.log(req?.success);
       if (req?.success) {
         informSucess(navigate(routerLinks("DSPL")));
       } else {
         informError();
       }
     } catch (error) {
-      console.log(error);
+      informError();
+      // console.log(error);
     }
   };
+  console.log(data);
   return (
-    <Form
-      name="edit"
-      initialValues={{
-        MaNV: data?.state?.info?.MaNV,
-        ThangTL: data?.state?.info?.ThangTL,
-        NamTL: data?.state?.info?.NamTL,
-        SoNgayCong: data?.state?.info?.SoNgayCong,
-        SoNgayNghi: data?.state?.info?.SoNgayNghi,
-        TienUng: data?.state?.info?.TienUng,
-      }}
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Mã nhân viên:"
-        name="MaNV"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống mã nhân viên!",
-          },
-        ]}
-      >
-        <Input type="number" />
-      </Form.Item>
-      <Form.Item
-        label="Tháng:"
-        name="ThangTL"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống tháng!",
-          },
-        ]}
-      >
-        <Input
-          type="number"
-          min={new Date().getMonth()}
-          max={new Date().getMonth() + 1}
-        />
-      </Form.Item>
-      <Form.Item
-        label="Năm:"
-        name="NamTL"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống năm!",
-          },
-        ]}
-      >
-        <Input
-          type="number"
-          min={new Date().getFullYear() - 1}
-          max={new Date().getFullYear() + 1}
-          defaultValue={26}
-        />
-      </Form.Item>
+    <>
+      <h1>Chỉnh sửa phiếu lương cho nhân viên :</h1>
 
-      <Form.Item
-        label="Số ngày nghỉ:"
-        name="SoNgayNghi"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống số ngày nghỉ!",
-          },
-        ]}
-      >
-        <Input type="number" min={0} max={4} />
-      </Form.Item>
-      <Form.Item
-        label="Tiền ứng:"
-        name="TienUng"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống số tiền ứng!",
-          },
-        ]}
-      >
-        <Input type="number" min={0} max={5000000} />
-      </Form.Item>
-
-      <Form.Item
+      <Form
+        name="edit"
+        initialValues={{
+          MaNV: data?.state?.info?.MaNV,
+          ThangTL: data?.state?.info?.ThangTL,
+          NamTL: data?.state?.info?.NamTL,
+          // SoNgayCong: data?.state?.info?.SoNgayCong,
+          SoNgayNghi: data?.state?.info?.SoNgayNghi,
+          TienUng: data?.state?.info?.TienUng,
+        }}
+        labelCol={{
+          span: 8,
+        }}
         wrapperCol={{
-          offset: 8,
           span: 16,
         }}
+        style={{
+          maxWidth: 600,
+        }}
+        onFinish={onFinish}
+        autoComplete="off"
       >
-        <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
-          type="primary"
-          htmlType="submit"
+        <Form.Item
+          label="Mã nhân viên:"
+          name="MaNV"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống mã nhân viên!",
+            },
+          ]}
         >
-          Lưu
-        </Button>
-      </Form.Item>
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
-          type="primary"
-          htmlType="submit"
-          onClick={() => {
-            navigate(routerLinks("DSPL"));
+          <Input type="number" />
+        </Form.Item>
+        <Form.Item
+          label="Tháng:"
+          name="ThangTL"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống tháng!",
+            },
+          ]}
+        >
+          <Input
+            type="number"
+            min={new Date().getMonth()}
+            max={new Date().getMonth() + 1}
+          />
+        </Form.Item>
+        <Form.Item
+          label="Năm:"
+          name="NamTL"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống năm!",
+            },
+          ]}
+        >
+          <Input
+            type="number"
+            min={new Date().getFullYear() - 1}
+            max={new Date().getFullYear() + 1}
+            // defaultValue={26}
+          />
+        </Form.Item>
+
+        <Form.Item
+          label="Số ngày nghỉ:"
+          name="SoNgayNghi"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống số ngày nghỉ!",
+            },
+          ]}
+        >
+          <Input type="number" min={0} max={4} />
+        </Form.Item>
+        <Form.Item
+          label="Tiền ứng:"
+          name="TienUng"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống số tiền ứng!",
+            },
+          ]}
+        >
+          <Input type="number" min={0} max={5000000} />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
           }}
         >
-          Hủy
-        </Button>
-      </Form.Item>
-    </Form>
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+          >
+            Lưu
+          </Button>
+
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+            onClick={() => {
+              navigate(routerLinks("DSPL"));
+            }}
+          >
+            Hủy
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default Edit;

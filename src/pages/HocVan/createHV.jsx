@@ -38,6 +38,7 @@ const App = () => {
   };
   return (
     <>
+      <h1>Tạo học vấn :</h1>
       <Form
         name="basic"
         labelCol={{

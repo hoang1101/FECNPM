@@ -46,6 +46,8 @@ const App = () => {
         };
 
         informSucess(navigate(routerLinks("DSKTKL")));
+      } else {
+        informError();
       }
     } catch (error) {
       informError();
@@ -56,122 +58,125 @@ const App = () => {
   }, []);
   return (
     <>
-      <Form
-        name="basic"
-        labelCol={{
-          span: 10,
-        }}
-        wrapperCol={{
-          span: 12,
-        }}
-        style={{
-          maxWidth: 800,
-          marginTop: 60,
-        }}
-        onFinish={onRegister}
-        onFinishFailed={onFinishFailed}
-        autoComplete="off"
-      >
-        <Form.Item
-          style={{
-            marginBottom: 20,
+      <h1>Tạo khen thưởng kỷ luật : </h1>
+      <>
+        <Form
+          name="basic"
+          labelCol={{
+            span: 10,
           }}
-          label="Mã nhân viên:"
-          name="MaNV"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống tên nhân viên!",
-            },
-          ]}
+          wrapperCol={{
+            span: 12,
+          }}
+          style={{
+            maxWidth: 800,
+            marginTop: 60,
+          }}
+          onFinish={onRegister}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
         >
-          <Select>
-            {data.map((child) => {
-              return (
-                <Select.Option key={child?.MaNV} value={child?.MaNV}>
-                  {child?.MaNV} - {child?.HoTen}
-                </Select.Option>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Mã nhân viên:"
+            name="MaNV"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống tên nhân viên!",
+              },
+            ]}
+          >
+            <Select>
+              {data.map((child) => {
+                return (
+                  <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                    {child?.MaNV} - {child?.HoTen}
+                  </Select.Option>
+                );
+              })}
+            </Select>
+          </Form.Item>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Hình thức:"
+            name="HinhThuc"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống hình thức!",
+              },
+            ]}
+          >
+            <Select>
+              (<Select.Option value={"1"}>Khen thưởng</Select.Option>
+              <Select.Option value={"0"}>Kỷ luật</Select.Option>
               );
-            })}
-          </Select>
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
-          }}
-          label="Hình thức:"
-          name="HinhThuc"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống hình thức!",
-            },
-          ]}
-        >
-          <Select>
-            (<Select.Option value={"1"}>Khen thưởng</Select.Option>
-            <Select.Option value={"0"}>Kỷ luật</Select.Option>
-            );
-          </Select>
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
-          }}
-          label="Lí do:"
-          name="LiDo"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống lí do!",
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
-        <Form.Item
-          style={{
-            marginBottom: 20,
-          }}
-          label="Số tiền:"
-          name="SoTien"
-          rules={[
-            {
-              required: true,
-              message: "Không thể bỏ trống số tiền!",
-            },
-          ]}
-        >
-          <Input type="number" max={5000000} />
-        </Form.Item>
-        <Button
-          style={{
-            backgroundColor: "#c00",
-            borderColor: "#c00",
-            marginLeft: "240px",
-            marginTop: 20,
-          }}
-          type="primary"
-          htmlType="submit"
-        >
-          Lưu
-        </Button>
-        <Button
-          style={{
-            backgroundColor: "#c00",
-            borderColor: "#c00",
-            marginLeft: "240px",
-            marginTop: 20,
-          }}
-          type="primary"
-          htmlType="submit"
-          onClick={() => {
-            navigate(routerLinks("DSKTKL"));
-          }}
-        >
-          Hủy
-        </Button>
-      </Form>
+            </Select>
+          </Form.Item>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Lí do:"
+            name="LiDo"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống lí do!",
+              },
+            ]}
+          >
+            <Input type="text" />
+          </Form.Item>
+          <Form.Item
+            style={{
+              marginBottom: 20,
+            }}
+            label="Số tiền:"
+            name="SoTien"
+            rules={[
+              {
+                required: true,
+                message: "Không thể bỏ trống số tiền!",
+              },
+            ]}
+          >
+            <Input type="number" max={5000000} />
+          </Form.Item>
+          <Button
+            style={{
+              backgroundColor: "#c00",
+              borderColor: "#c00",
+              marginLeft: "240px",
+              marginTop: 20,
+            }}
+            type="primary"
+            htmlType="submit"
+          >
+            Lưu
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "#c00",
+              borderColor: "#c00",
+              marginLeft: "240px",
+              marginTop: 20,
+            }}
+            type="primary"
+            htmlType="submit"
+            onClick={() => {
+              navigate(routerLinks("DSKTKL"));
+            }}
+          >
+            Hủy
+          </Button>
+        </Form>
+      </>
     </>
   );
 };

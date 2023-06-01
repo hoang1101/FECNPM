@@ -2,6 +2,15 @@ import { MANAGER_API_PATH } from "@/constant/api";
 import axiosClient from "./axiosClient";
 
 const ManagerAdmin = {
+  //DS nhan vien
+  TenNV: async (data) => {
+    try {
+      const url = `/${MANAGER_API_PATH}/TENNV`;
+      return axiosClient.get(url, data);
+    } catch (error) {
+      console.log(error);
+    }
+  },
   // tao tai khoan
   createNV: async (data) => {
     try {
@@ -319,6 +328,15 @@ const ManagerAdmin = {
   TKNVCV: async (MaChucVu) => {
     try {
       const url = `${MANAGER_API_PATH}/TKNVCV/${MaChucVu}`;
+      return axiosClient.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  //thong ke luong
+  TKL: async (MaNv, NamTL) => {
+    try {
+      const url = `${MANAGER_API_PATH}/TK/${MaNv}/${NamTL}`;
       return axiosClient.get(url);
     } catch (error) {
       console.log(error);

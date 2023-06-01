@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import NVHD from "./index";
 import NVCV from "./chucvu";
+import TKL from "./Luong";
 
 const App = () => {
   return (
@@ -15,10 +16,10 @@ const App = () => {
         <Tabs.TabPane tab="Chức vụ" key="2">
           <NVCV />
         </Tabs.TabPane>
-        {/* <Tabs.TabPane tab="KTKL" key="3">
-          <NVHD data={data3} />
+        <Tabs.TabPane tab="Lương" key="3">
+          <TKL />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Phiếu lương" key="4">
+        {/* <Tabs.TabPane tab="Phiếu lương" key="4">
           <NVHD data={data4?.data} />
         </Tabs.TabPane> */}
       </Tabs>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import routerLinks from "@/utils/router-links";
 
 import moment from "moment";
-import { showLockUserModal } from "@/components/AccountModal/Modal";
+import { showLockHD, showLockUserModal } from "@/components/AccountModal/Modal";
 import { unLockHDLD, LockHDLD } from "./lockHDLD";
 
 export const columns = (getColumnSearchProps, listHDLD) => {
@@ -97,7 +97,7 @@ export const columns = (getColumnSearchProps, listHDLD) => {
           {info?.TrangThai ? (
             <UnlockOutlined
               onClick={() => {
-                showLockUserModal(true, async () => {
+                showLockHD(true, async () => {
                   if (await LockHDLD(info?.MaHDLD)) {
                     listHDLD();
                   }
@@ -107,7 +107,7 @@ export const columns = (getColumnSearchProps, listHDLD) => {
           ) : (
             <LockOutlined
               onClick={() => {
-                showLockUserModal(false, async () => {
+                showLockHD(false, async () => {
                   if (await unLockHDLD(info?.MaHDLD)) {
                     listHDLD();
                   }

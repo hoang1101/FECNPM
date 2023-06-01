@@ -68,6 +68,7 @@ const App = () => {
   };
   return (
     <>
+      <h1>Tạo hợp đồng lao động : </h1>
       <Form
         name="basic"
         labelCol={{

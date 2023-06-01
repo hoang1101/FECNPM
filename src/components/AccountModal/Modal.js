@@ -69,6 +69,23 @@ export const showLockUserModal = (action, onAccept) => {
     }
   });
 };
+export const showLockHD = (action, onAccept) => {
+  swal({
+    title: action
+      ? `Bạn có muốn hủy hợp đồng này không?`
+      : "Bạn có muốn mở lại hợp đồng này không?",
+    text: action
+      ? `Khi khi hủy hợp đồng thì tài khoản này sẽ bị khóa`
+      : "Khi mở hợp đồng, tài khoản này sẽ có thể sử dụng lại",
+    icon: "warning",
+    // dangerMode: true,
+    buttons: ["Hủy", "Đồng Ý"],
+  }).then((yes) => {
+    if (yes) {
+      onAccept();
+    }
+  });
+};
 
 export const showApproveModal = (action, onAccept) => {
   swal({
@@ -107,8 +124,8 @@ export const showConfirmError = () => {
 
 export const showDeleteBanner = (name, onAccept) => {
   swal({
-    title: `Bạn có muốn xóa banner này?`,
-    text: `Khi xóa ${name} không thể khôi phục bạn có muốn tiếp tục?`,
+    title: `Bạn có muốn hủy hợp đồng này?`,
+    text: ``,
     icon: "warning",
     // dangerMode: true,
     buttons: ["Hủy", "Đồng Ý"],

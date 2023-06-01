@@ -158,6 +158,7 @@ const App = () => {
 
   return (
     <div>
+      <h1>Danh sách khen thưởng kỷ luật :</h1>
       <Table
         dataSource={data}
         columns={columns(getColumnSearchProps)}

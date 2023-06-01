@@ -52,7 +52,7 @@ const Edit = () => {
           HoTen: res?.data?.HoTen,
           MaChucVu: res?.data?.MaChucVu,
           NgaySinh: res?.data?.NgaySinh,
-          GioiTinh: res?.data?.GioiTinh ? "1" : "0",
+          GioiTinh: res?.data?.GioiTinh,
           CCCD: res?.data?.CCCD,
           SDT: res?.data?.SDT,
           Email: res?.data?.Email,
@@ -155,8 +155,8 @@ const Edit = () => {
         ]}
       >
         <Select>
-          <Select.Option value={true}>Nam</Select.Option>
-          <Select.Option value={false}>Nữ</Select.Option>
+          <Select.Option value={"1"}>Nam</Select.Option>
+          <Select.Option value={"0"}>Nữ</Select.Option>
         </Select>
       </Form.Item>
       <Form.Item

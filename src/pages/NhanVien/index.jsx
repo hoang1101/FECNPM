@@ -22,7 +22,7 @@ const App = () => {
   };
   const ccc = async () => {
     try {
-      const response = await ManagerAdmin.NVKHD();
+      const response = await ManagerAdmin.KT();
       //   if (response?.success) {
       setData2(response);
       //   }
@@ -62,7 +62,7 @@ const App = () => {
         <Tabs.TabPane tab="Danh sách nhân viên đã ký hợp đồng" key="1">
           <NVHD data={data1} />
         </Tabs.TabPane>
-        <Tabs.TabPane tab="Danh sách nhân viên hết có HDHD và bị hủy" key="2">
+        <Tabs.TabPane tab="Danh sách nhân viên hết HDHD hoặc bị hủy" key="2">
           <NVHD data={data2} />
         </Tabs.TabPane>
         <Tabs.TabPane tab="Danh sách nhân viên chưa ký đồng" key="3">

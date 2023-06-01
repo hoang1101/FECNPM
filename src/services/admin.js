@@ -4,8 +4,8 @@ import axiosClient from "./axiosClient";
 const AdminService = {
   register: async (data) => {
     try {
-      const url = `/${ADMIN_API_PATH}/register`;
-      return axiosClient.post(url, data);
+      const url = `/${ADMIN_API_PATH}/register/${data.MaNV}`;
+      return axiosClient.put(url, data);
     } catch (error) {
       console.log(error);
     }

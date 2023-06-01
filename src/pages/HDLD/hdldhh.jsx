@@ -8,7 +8,7 @@ import { useState } from "react";
 import Highlighter from "react-highlight-words";
 import { columns } from "./columns";
 
-const App = () => {
+const App = ({ loadData }) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState(true);
 
@@ -28,7 +28,7 @@ const App = () => {
   useEffect(() => {
     listHDLD();
     // setStatus(false);
-  }, []);
+  }, [loadData]);
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);

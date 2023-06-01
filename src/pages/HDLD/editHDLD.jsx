@@ -59,146 +59,149 @@ const Edit = () => {
 
   // console.log(data?.state);
   return (
-    <Form
-      name="edit"
-      initialValues={{
-        MaNV: data?.state?.info?.MaNV,
-        NgayBatDau: moment(data?.state?.info?.NgayBatDau),
-        NgayKetThuc: moment(data?.state?.info?.NgayKetThuc),
-        MaBac: data?.state?.info?.MaBac,
-        NgayKy: moment(data?.state?.info?.NgayKy),
-      }}
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
+    <>
+      <h1>Chỉnh sửa hợp đồng lao động : </h1>
+      <Form
+        name="edit"
+        initialValues={{
+          MaNV: data?.state?.info?.MaNV,
+          NgayBatDau: moment(data?.state?.info?.NgayBatDau),
+          NgayKetThuc: moment(data?.state?.info?.NgayKetThuc),
+          MaBac: data?.state?.info?.MaBac,
+          NgayKy: moment(data?.state?.info?.NgayKy),
+        }}
+        labelCol={{
+          span: 8,
+        }}
+        wrapperCol={{
+          span: 16,
+        }}
         style={{
-          marginBottom: 20,
+          maxWidth: 600,
         }}
-        label="Mã nhân viên:"
-        name="MaNV"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống mã nhân viên!",
-          },
-        ]}
+        onFinish={onFinish}
+        autoComplete="off"
       >
-        <Select>
-          {data1.map((child) => {
-            return (
-              <Select.Option key={child?.MaNV} value={child?.MaNV}>
-                {child?.MaNV} - {child?.HoTen}
-              </Select.Option>
-            );
-          })}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        style={{
-          marginBottom: 20,
-        }}
-        label="Ngày bắt đầu:"
-        name="NgayBatDau"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống ngày bắt đầu!",
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
-      <Form.Item
-        style={{
-          marginBottom: 20,
-        }}
-        label="Ngày kết thúc:"
-        name="NgayKetThuc"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống ngày kết thúc!",
-          },
-        ]}
-      >
-        <DatePicker />
-      </Form.Item>
-      <Form.Item
-        style={{
-          marginBottom: 20,
-        }}
-        label="Ngày ký hợp đồng:"
-        name="NgayKy"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống ngày ký!",
-          },
-        ]}
-      >
-        <DatePicker disabled={true} />
-      </Form.Item>
-      <Form.Item
-        style={{
-          marginBottom: 20,
-        }}
-        label="Mã Bậc:"
-        name="MaBac"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống mã bậc lương!",
-          },
-        ]}
-      >
-        <Select>
-          {dataBL.map((child) => {
-            return (
-              <Select.Option key={child?.MaBac} value={child?.MaBac}>
-                {child?.MaBac} - {child?.HeSo}
-              </Select.Option>
-            );
-          })}
-        </Select>
-      </Form.Item>
-      <Button
-        style={{
-          backgroundColor: "#c00",
-          borderColor: "#c00",
-          marginLeft: "240px",
-          marginTop: 20,
-        }}
-        type="primary"
-        htmlType="submit"
-      >
-        Lưu
-      </Button>{" "}
-      <Button
-        style={{
-          backgroundColor: "#c00",
-          borderColor: "#c00",
-          marginLeft: "240px",
-          marginTop: 20,
-        }}
-        type="primary"
-        htmlType="submit"
-        onClick={() => {
-          navigate(routerLinks("DSHDLD"));
-        }}
-      >
-        Hủy
-      </Button>
-    </Form>
+        <Form.Item
+          style={{
+            marginBottom: 20,
+          }}
+          label="Mã nhân viên:"
+          name="MaNV"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống mã nhân viên!",
+            },
+          ]}
+        >
+          <Select>
+            {data1.map((child) => {
+              return (
+                <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                  {child?.MaNV} - {child?.HoTen}
+                </Select.Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          style={{
+            marginBottom: 20,
+          }}
+          label="Ngày bắt đầu:"
+          name="NgayBatDau"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống ngày bắt đầu!",
+            },
+          ]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          style={{
+            marginBottom: 20,
+          }}
+          label="Ngày kết thúc:"
+          name="NgayKetThuc"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống ngày kết thúc!",
+            },
+          ]}
+        >
+          <DatePicker />
+        </Form.Item>
+        <Form.Item
+          style={{
+            marginBottom: 20,
+          }}
+          label="Ngày ký hợp đồng:"
+          name="NgayKy"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống ngày ký!",
+            },
+          ]}
+        >
+          <DatePicker disabled={true} />
+        </Form.Item>
+        <Form.Item
+          style={{
+            marginBottom: 20,
+          }}
+          label="Mã Bậc:"
+          name="MaBac"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống mã bậc lương!",
+            },
+          ]}
+        >
+          <Select>
+            {dataBL.map((child) => {
+              return (
+                <Select.Option key={child?.MaBac} value={child?.MaBac}>
+                  {child?.MaBac} - {child?.HeSo}
+                </Select.Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Button
+          style={{
+            backgroundColor: "#c00",
+            borderColor: "#c00",
+            marginLeft: "240px",
+            marginTop: 20,
+          }}
+          type="primary"
+          htmlType="submit"
+        >
+          Lưu
+        </Button>{" "}
+        <Button
+          style={{
+            backgroundColor: "#c00",
+            borderColor: "#c00",
+            marginLeft: "240px",
+            marginTop: 20,
+          }}
+          type="primary"
+          htmlType="submit"
+          onClick={() => {
+            navigate(routerLinks("DSHDLD"));
+          }}
+        >
+          Hủy
+        </Button>
+      </Form>
+    </>
   );
 };
 export default Edit;

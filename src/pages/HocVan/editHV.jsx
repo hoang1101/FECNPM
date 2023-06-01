@@ -26,68 +26,71 @@ const Edit = () => {
   };
   // console.log(data.TenHocVan);
   return (
-    <Form
-      name="edit"
-      initialValues={{
-        TrinhDo: data?.state?.info?.TrinhDo,
-      }}
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Tên Học Vấn:"
-        name="TrinhDo"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống tên chức vụ!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
+    <>
+      <h1>Chỉnh sửa học vấn : </h1>
+      <Form
+        name="edit"
+        initialValues={{
+          TrinhDo: data?.state?.info?.TrinhDo,
+        }}
+        labelCol={{
+          span: 8,
+        }}
         wrapperCol={{
-          offset: 8,
           span: 16,
         }}
+        style={{
+          maxWidth: 600,
+        }}
+        onFinish={onFinish}
+        autoComplete="off"
       >
-        <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
-          type="primary"
-          htmlType="submit"
+        <Form.Item
+          label="Tên Học Vấn:"
+          name="TrinhDo"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống tên chức vụ!",
+            },
+          ]}
         >
-          Lưu
-        </Button>
-      </Form.Item>
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
-        <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
-          type="primary"
-          htmlType="submit"
-          onClick={() => {
-            navigate(routerLinks("DSHV"));
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
           }}
         >
-          Hủy
-        </Button>
-      </Form.Item>
-    </Form>
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+          >
+            Lưu
+          </Button>
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+            onClick={() => {
+              navigate(routerLinks("DSHV"));
+            }}
+          >
+            Hủy
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default Edit;

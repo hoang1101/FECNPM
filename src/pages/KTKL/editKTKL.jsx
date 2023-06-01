@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Button, Form, Input, Select } from "antd";
 import routerLinks from "@/utils/router-links";
-import { informSucess } from "@/components/AccountModal/Modal";
+import { informError, informSucess } from "@/components/AccountModal/Modal";
 import { ManagerAdmin } from "@/services";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -47,100 +47,103 @@ const Edit = () => {
     }
   };
   return (
-    <Form
-      name="edit"
-      initialValues={{
-        MaNV: data?.state?.info?.MaNV,
-        HinhThuc: data?.state?.info?.HinhThuc,
-        LiDo: data?.state?.info?.LiDo,
-        SoTien: data?.state?.info?.SoTien,
-      }}
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
-      onFinish={onFinish}
-      autoComplete="off"
-    >
-      <Form.Item
-        label="Mã nhân viên:"
-        name="MaNV"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống tên nhân viên!",
-          },
-        ]}
-      >
-        <Select>
-          {dataNV.map((child) => {
-            return (
-              <Select.Option key={child?.MaNV} value={child?.MaNV}>
-                {child?.MaNV} - {child?.HoTen}
-              </Select.Option>
-            );
-          })}
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Hình thức:"
-        name="HinhThuc"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống hình thức!",
-          },
-        ]}
-      >
-        <Select>
-          <Select.Option value={true}>Khen Thưởng</Select.Option>
-          <Select.Option value={false}>Kỉ Luật</Select.Option>
-        </Select>
-      </Form.Item>
-      <Form.Item
-        label="Lí do:"
-        name="LiDo"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống lí do!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        label="Số tiền:"
-        name="SoTien"
-        rules={[
-          {
-            required: true,
-            message: "Không thể bỏ trống số tiền!",
-          },
-        ]}
-      >
-        <Input type="number" max={5000000} />
-      </Form.Item>
-      <Form.Item
+    <>
+      <h1>Chỉnh sửa khen thưởng kỷ luật : </h1>
+      <Form
+        name="edit"
+        initialValues={{
+          MaNV: data?.state?.info?.MaNV,
+          HinhThuc: data?.state?.info?.HinhThuc,
+          LiDo: data?.state?.info?.LiDo,
+          SoTien: data?.state?.info?.SoTien,
+        }}
+        labelCol={{
+          span: 8,
+        }}
         wrapperCol={{
-          offset: 8,
           span: 16,
         }}
+        style={{
+          maxWidth: 600,
+        }}
+        onFinish={onFinish}
+        autoComplete="off"
       >
-        <Button
-          style={{ backgroundColor: "#c00", borderColor: "#c00" }}
-          type="primary"
-          htmlType="submit"
+        <Form.Item
+          label="Mã nhân viên:"
+          name="MaNV"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống tên nhân viên!",
+            },
+          ]}
         >
-          Lưu
-        </Button>
-      </Form.Item>
-    </Form>
+          <Select>
+            {dataNV.map((child) => {
+              return (
+                <Select.Option key={child?.MaNV} value={child?.MaNV}>
+                  {child?.MaNV} - {child?.HoTen}
+                </Select.Option>
+              );
+            })}
+          </Select>
+        </Form.Item>
+        <Form.Item
+          label="Hình thức:"
+          name="HinhThuc"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống hình thức!",
+            },
+          ]}
+        >
+          <Select>
+            <Select.Option value={true}>Khen Thưởng</Select.Option>
+            <Select.Option value={false}>Kỉ Luật</Select.Option>
+          </Select>
+        </Form.Item>
+        <Form.Item
+          label="Lí do:"
+          name="LiDo"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống lí do!",
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          label="Số tiền:"
+          name="SoTien"
+          rules={[
+            {
+              required: true,
+              message: "Không thể bỏ trống số tiền!",
+            },
+          ]}
+        >
+          <Input type="number" max={5000000} />
+        </Form.Item>
+        <Form.Item
+          wrapperCol={{
+            offset: 8,
+            span: 16,
+          }}
+        >
+          <Button
+            style={{ backgroundColor: "#c00", borderColor: "#c00" }}
+            type="primary"
+            htmlType="submit"
+          >
+            Lưu
+          </Button>
+        </Form.Item>
+      </Form>
+    </>
   );
 };
 export default Edit;

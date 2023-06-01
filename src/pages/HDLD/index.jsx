@@ -1,34 +1,34 @@
-import { informError, informSucess } from '@/components/AccountModal/Modal';
-import { ManagerAdmin } from '@/services';
-import { SearchOutlined } from '@ant-design/icons';
-import { Button, Input, Space, Table } from 'antd';
-import { useEffect } from 'react';
-import { useRef } from 'react';
-import { useState } from 'react';
-import Highlighter from 'react-highlight-words';
-import { columns } from './columns';
+import { informError, informSucess } from "@/components/AccountModal/Modal";
+import { ManagerAdmin } from "@/services";
+import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Space, Table } from "antd";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { useState } from "react";
+import Highlighter from "react-highlight-words";
+import { columns } from "./columns";
 
-const App = () => {
+const App = ({ loadData }) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState(true);
 
-  const [searchText, setSearchText] = useState('');
-  const [searchedColumn, setSearchedColumn] = useState('');
+  const [searchText, setSearchText] = useState("");
+  const [searchedColumn, setSearchedColumn] = useState("");
   const searchInput = useRef(null);
-
+  useEffect(() => {
+    listHDLD();
+    // setStatus(false);
+  }, [loadData]);
   let uniqueId = 1;
   const listHDLD = async () => {
     try {
       const response = await ManagerAdmin.DSHDLD();
       setData(response);
     } catch (error) {
-      console.log('Error : ', error);
+      console.log("Error : ", error);
     }
   };
-  useEffect(() => {
-    listHDLD();
-    // setStatus(false);
-  }, []);
+
   const handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     setSearchText(selectedKeys[0]);
@@ -37,7 +37,7 @@ const App = () => {
   };
   const handleReset = (clearFilters) => {
     clearFilters();
-    setSearchText('');
+    setSearchText("");
   };
   const getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -63,7 +63,7 @@ const App = () => {
           onPressEnter={() => handleSearch(selectedKeys, confirm, dataIndex)}
           style={{
             marginBottom: 8,
-            display: 'block',
+            display: "block",
           }}
         />
         <Space>
@@ -115,7 +115,7 @@ const App = () => {
     filterIcon: (filtered) => (
       <SearchOutlined
         style={{
-          color: filtered ? '#1890ff' : undefined,
+          color: filtered ? "#1890ff" : undefined,
         }}
       />
     ),
@@ -130,12 +130,12 @@ const App = () => {
       searchedColumn === dataIndex ? (
         <Highlighter
           highlightStyle={{
-            backgroundColor: '#ffc069',
+            backgroundColor: "#ffc069",
             padding: 0,
           }}
           searchWords={[searchText]}
           autoEscape
-          textToHighlight={text ? text.toString() : ''}
+          textToHighlight={text ? text.toString() : ""}
         />
       ) : (
         text

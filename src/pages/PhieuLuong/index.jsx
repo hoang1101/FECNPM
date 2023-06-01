@@ -144,6 +144,8 @@ const App = () => {
 
   return (
     <div>
+      <h1>Danh sách phiếu lương :</h1>
+
       <Table
         dataSource={data}
         columns={columns(getColumnSearchProps)}
